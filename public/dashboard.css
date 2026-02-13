@@ -1,0 +1,128 @@
+ *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f6f8;
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+  width: 250px;
+  background-color: #104620;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+.sidebar a {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+.sidebar a:hover, .sidebar a.active {
+  background-color: #34495e;
+}
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+header {
+  background-color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+header h1 {
+  font-size: 24px;
+  color: #2c3e50;
+}
+.section {
+  display: none;
+}
+.section.active {
+  display: block;
+}
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.chart {
+  max-width: 100%;
+  width: 10%;
+  max-height: 100%;
+  height: 10%;
+
+  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+  #schedule th{
+   text-align: center;
+   padding: 10px;
+   border-bottom: groove black;
+  }
+  #schedule td{
+    padding: 10px;
+    text-align: center;
+  }
+  #schedule tr:nth-child(odd){
+    background-color: rgb(206, 206, 206);
+  }
+
+  .reportsCircle{
+      display: flex;
+      justify-content: space-evenly; /* even horizontal spacing */
+      align-items: center;            /* vertical alignment */
+      padding: 20px;
+  }
+  #label{
+    background-color: #64cc86;
+    padding: 40px;
+    flex: 1;                         
+    margin: 5px 20px 20px 5px;            
+    text-align: center;          
+    border-radius: 50px 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  }
+   h3 {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  text-align: center;
+  }
+
+  #label p {
+    color: #020f08;
+    font-size: 5rem;              
+    font-weight: bold;
+    margin: 0;
+  }
+
+  #reportList{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 20px;
+  }

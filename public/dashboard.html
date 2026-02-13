@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Dashboard</h2>
+  
+  <a href="#" class="active" data-section="reports">Reports</a>
+  <a href="#" data-section="charts">Monthly Chart Reports</a>
+  <a href="#" data-section="schedule">Truck Schedule</a>
+  <a href="#" data-section="map">Town Map</a>
+  <a href="#" data-section="users">Registered Users</a>
+
+</div>
+
+<div class="main-content">
+  <header>
+    <h1 id="section-title">Reports</h1>
+  </header>
+
+  
+  
+  <!-- REPORTS TAB -->
+  <div id="reports" class="section">
+    
+  <div class="card">
+    <h3>Report Summary</h3>
+    <div class="reportsCircle">
+  <div  id="label"> <p><b id="totalCount">0</b></p><h3>Total Reports </h3></div>
+ <div  id="label"><p><b id="pendingCount">0</b><h3> Pending </h3></p></div>
+   <div  id="label"><p><b id="doneCount">0</b></p><h3> Resolved </h3></div>
+  
+ 
+  </div>
+  </div>
+
+
+    <div class="card">
+     
+      <h3>Generate and view system reports here.</h3>
+
+      <!-- Add Report Form -->
+      <div style="margin-bottom: 20px;">
+        <input id="reportTitle" type="text" placeholder="Report Title" style="width: 40%; padding: 5px; margin-right: 10px;">
+        <input id="reportDescription" type="text" placeholder="Report Details" style="width: 50%; padding: 5px; margin-right: 10px;">
+        <button id="saveReportBtn" style="padding: 5px 10px;">Add Report</button>
+      </div>
+
+      <!-- Report List -->
+      <div id="reportList"></div>
+    </div>
+  </div>
+
+    <!-- USERS TAB -->
+  <div id="users" class="section">
+    <div class="card">
+      <ul id="userList"></ul>
+    </div>
+  </div>
+
+  <!-- CHART TAB -->
+  <div id="charts" class="section">
+    <div class="card">
+      <h3>Monthly Chart Reports</h3>
+
+      <!-- Total Reports -->
+      <div id="totalReports" style="font-size: 20px; margin-bottom: 15px; font-weight: bold;">
+        Total Reports: 0
+      </div>
+
+      <!-- Chart -->
+      <canvas id="reportChart" width="600" height="300"></canvas>
+    </div>
+  </div>
+
+  <!-- SCHEDULE TAB -->
+  <div id="schedule" class="section">
+    <div class="card">
+      <h3>Truck Collection Schedule</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr style="background-color:#ecf0f1;">
+          <th>Truck ID</th>
+          <th>Driver</th>
+          <th>Destination</th>
+          <th>Schedule</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>IBY-001</td>
+          <td>MITCHELL TANEGA</td>
+          <td>MALAINEN BAGO</td>
+          <td>MONDAY, WEDNESDAY</td>
+          <td>ACTIVE</td>
+        </tr>
+        <tr>
+          <td>MBL-002</td>
+          <td>MARC ARJAY MALAKAS</td>
+          <td>IBAYO SILANGAN</td>
+          <td>TUESDAY, THURSDAY</td>
+          <td>ACTIVE</td>
+        </tr>
+        <tr>
+          <td>HOK-003</td>
+          <td>ALDRIN DE MABUHAT</td>
+          <td>TIMALAN BALSAHAN</td>
+          <td>FRIDAY, SATURDAY</td>
+          <td>ACTIVE</td>
+        </tr>
+        <tr>
+          <td>ACM-004</td>
+          <td>MUSES CHICHARAP</td>
+          <td>BUCANA MALAKI</td>
+          <td>SUNDAY</td>
+          <td>ON LEAVE</td>
+        </tr>
+        <tr>
+          <td>GND-005</td>
+          <td>YESHA MAGANDA</td>
+          <td>SABANG</td>
+          <td>KUNG KELAN GUSTO</td>
+          <td>TINATAMAD</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- MAP TAB -->
+  <div id="map" class="section">
+    <div class="card">
+      <iframe
+        width="100%"
+        height="700px"
+        style="border:0;"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps?q=14.2964865,120.792458&z=13&output=embed">
+      </iframe>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// -------------------------
+// TAB SWITCHING
+// -------------------------
+const links = document.querySelectorAll('.sidebar a');
+const sections = document.querySelectorAll('.section');
+const title = document.getElementById('section-title');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    links.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById("link.dataset.section").style.display = 'block';
+    title.textContent = link.textContent;
+  });
+});
+
+// Show default tab
+sections.forEach(sec => sec.style.display = 'none');
+document.getElementById("reports").style.display = "block";
+links.forEach(l => l.classList.remove('active'));
+document.querySelector('[data-section="reports"]').classList.add('active');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    links.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(link.dataset.section).style.display = 'block';
+    title.textContent = link.textContent;
+  });
+});
+
+// Show default tab
+sections.forEach(sec => sec.style.display = 'none');
+document.getElementById("reports").style.display = "block";
+// -------------------------
+// USERS
+// -------------------------
+const userList = document.getElementById("userList");
+function loadUsers() {
+  fetch("/get-users")
+    .then(res => res.json())
+    .then(users => {
+      userList.innerHTML = "";
+      users.forEach(u => {
+        const li = document.createElement("li");
+        li.innerHTML = `${u.id} — ${u.username} <button onclick="deleteUser(${u.id})">Delete</button>`;
+        userList.appendChild(li);
+      });
+    });
+}
+loadUsers();
+
+window.deleteUser = function(id) {
+  if(!confirm("Delete this user?")) return;
+  fetch("/delete-user", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({id})
+  }).then(res => res.json())
+    .then(data => { if(data.success) loadUsers(); });
+}
+// ===============================
+// DASHBOARD.JS
+// ===============================
+
+// ---- INITIAL LOAD ----
+loadReports();
+loadReportCounts();
+
+const reportTable = document.getElementById("reportList");
+const totalReportsEl = document.getElementById("totalReports");
+const saveBtn = document.getElementById("saveReportBtn");
+let reportChart;
+
+// ===============================
+// LOAD REPORT COUNTS
+// ===============================
+function loadReportCounts() {
+  fetch("/report-counts")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("totalCount").textContent = data.total;
+      document.getElementById("pendingCount").textContent = data.pending;
+      document.getElementById("doneCount").textContent = data.done;
+    })
+    .catch(err => console.error("Failed to load report counts", err));
+}
+
+// ===============================
+// LOAD REPORTS + CHART
+// ===============================
+function loadReports() {
+  fetch("/get-reports")
+    .then(res => res.json())
+    .then(reports => {
+
+      reportTable.innerHTML = "";
+
+      const pendingCounts = Array(12).fill(0);
+      const resolvedCounts = Array(12).fill(0);
+
+      reports.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "report";
+        div.innerHTML = `
+          <p>${new Date(r.created_at).toLocaleString()} <b>: ${r.title}</b></p>
+          <p>Details: ${r.description}</p>
+          <p>Status: <span>${r.status}</span></p>
+          <button onclick="markStatus(${r.id})">Toggle Status</button>
+          <button onclick="deleteReport(${r.id})">Delete</button>
+          <hr>
+        `;
+        reportTable.appendChild(div);
+
+        const month = new Date(r.created_at).getMonth();
+        if (r.status === "Pending") pendingCounts[month]++;
+        else resolvedCounts[month]++;
+      });
+
+      if (totalReportsEl) {
+        totalReportsEl.textContent = `Total Reports: ${reports.length}`;
+      }
+
+      const canvas = document.getElementById("reportChart");
+      if (reportChart) reportChart.destroy();
+
+      reportChart = new Chart(canvas, {
+        type: "bar",
+        data: {
+          labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+          datasets: [
+            {
+              label: "Pending",
+              data: pendingCounts,
+              backgroundColor: "rgba(255,99,132,0.6)"
+            },
+            {
+              label: "Resolved",
+              data: resolvedCounts,
+              backgroundColor: "rgba(54,162,235,0.6)"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+    })
+    .catch(err => console.error("Failed to load reports", err));
+}
+
+// ===============================
+// ADD REPORT
+// ===============================
+saveBtn.addEventListener("click", () => {
+  const title = document.getElementById("reportTitle").value.trim();
+  const description = document.getElementById("reportDescription").value.trim();
+
+  if (!title || !description) {
+    alert("Both title and details are required!");
+    return;
+  }
+
+  fetch("/add-report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, description })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById("reportTitle").value = "";
+        document.getElementById("reportDescription").value = "";
+        loadReports();
+        loadReportCounts();
+      } else {
+        alert("Failed to save report.");
+      }
+    });
+});
+
+// ===============================
+// TOGGLE STATUS
+// ===============================
+window.markStatus = function (id) {
+  fetch("/resolve-report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        loadReports();
+        loadReportCounts();
+      } else {
+        alert("Failed to toggle status.");
+      }
+    });
+};
+
+// ===============================
+// DELETE REPORT
+// ===============================
+window.deleteReport = function (id) {
+  if (!confirm("Delete this report?")) return;
+
+  fetch("/delete-report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id })
+  })
+    .then(() => {
+      loadReports();
+      loadReportCounts();
+    });
+};
+
+</script>
+</body>
+</html>

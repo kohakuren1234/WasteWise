@@ -1,0 +1,79 @@
+body {
+  font-family: Arial;
+  background: radial-gradient(white,green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  height: 100%;
+}
+
+.container {
+  background: white;
+  padding: 20px 30px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-box {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: blue;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: darkblue;
+}
+
+p {
+  font-size: 14px;
+}
+.navbar {
+  background: #222;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.navbar button,
+.navbar .logout {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background: #333;
+}
+
+.tab {
+  margin-top: 20px;
+}
+
+.report {
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+

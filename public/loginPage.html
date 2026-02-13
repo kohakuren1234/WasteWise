@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waste Management Login</title>
+  
+  <style>@view-transition { navigation: auto; }</style>
+  <link rel="stylesheet" href="loginPage.css">
+  <script defer src="script.js"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="animated-bg"></div>
+   <div class="particle"></div>
+   <div class="particle"></div>
+   <div class="particle"></div>
+   <div class="particle"></div>
+   <div class="particle"></div>
+   <div class="split-container">
+    <main class="info-panel">
+     <div class="logo-section">
+
+      
+
+
+      <h1 class="info-title">
+        <svg class="logo-icon-alt logoWW" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="50px" fill="#48752C">
+        <path d="M480-100q-79 0-148-30t-120.5-81.5Q160-263 130-332t-30-148q0-79 30-148t81.5-120.5Q263-800 332-830t148-30v-100l160 160-160 160v-100q-108 0-184 76t-76 184q0 66 30.5 122.5T332-266q16-28 47.5-47.5T452-338q-3-21-8-42t-12-39q-11 9-24 14t-28 5q-33 0-56.5-23.5T300-480v-40q0-17-5.5-32T280-580q50-1 89 9 34 9 62 29.5t29 61.5q0 9-1.5 16.5T453-448q-13-10-26-18t-27-14q17 13 39 40t41 64q20-49 50-96.5t70-87.5q-23 16-44 34t-41 38q-7-11-11-24.5t-4-27.5q0-42 29-71t71-29h40q23 0 38-6t25-14q11-9 17-20 4 67-7 120-9 45-34 82.5T600-440q-15 0-28.5-4T547-455q-7 19-16 50.5T517-337q38 7 67 26t44 45q51-35 81.5-91T740-480h120q0 79-30 148t-81.5 120.5Q697-160 628-130t-148 30Z"/></svg>
+        <span>Waste</span>
+        <span>Wise</span></h1>
+      <p class="info-subtitle">Smart Waste Management Platform</p>
+     </div>
+
+   
+     <div class="features-list">
+      <div class="feature-item">
+       <div class="feature-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M240-160q-50 0-85-35t-35-85H40v-440q0-33 23.5-56.5T120-800h560v160h120l120 160v200h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85H360q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T280-280q0-17-11.5-28.5T240-320q-17 0-28.5 11.5T200-280q0 17 11.5 28.5T240-240ZM120-360h32q17-18 39-29t49-11q27 0 49 11t39 29h272v-360H120v360Zm600 120q17 0 28.5-11.5T760-280q0-17-11.5-28.5T720-320q-17 0-28.5 11.5T680-280q0 17 11.5 28.5T720-240Zm-40-200h170l-90-120h-80v120ZM360-540Z"/></svg>
+       </div>
+
+
+       <div>
+        Keep track of your waste collections
+       </div>
+      </div>
+      <div class="feature-item">
+       <div class="feature-icon">
+        📊
+       </div>
+
+
+       <div>
+        Advanced analytics and reporting
+       </div>
+      </div>
+      <div class="feature-item">
+       <div class="feature-icon">
+        ♻️
+       </div>
+
+
+       <div>
+        Optimize your recycling processes
+       </div>
+      </div>
+     </div>
+
+
+    </main>
+  <section class="form-panel">
+  <div class="glass-card">
+    <div class="form-content">
+
+      <!-- LOGIN FORM -->
+      <div id="loginSection">
+        <h2 class="form-title-alt">Sign In</h2>
+
+        <div class="form-group-alt">
+          <label class="label-alt">Username</label>
+          <input type="text" id="logUser" class="input-alt" placeholder="Enter your username">
+        </div>
+
+        <div class="form-group-alt">
+          <label class="label-alt">Password</label>
+          <input type="password" id="logPass" class="input-alt" placeholder="Enter your password">
+        </div>
+
+        <button onclick="login()" type="button" class="submit-button-alt">
+          <span class="button-text">Log In</span>
+        </button>
+
+        <p id="logMessage"></p>
+
+        <div class="switch-section">
+          New to EcoTrack? 
+          <a href="#" onclick="showRegister()" class="switch-link-alt">Create Account</a>
+        </div>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="registerSection" style="display:none;">
+        <h2 class="form-title-alt">Create Account</h2>
+
+        <div class="form-group-alt">
+          <label class="label-alt">Username</label>
+          <input type="text" id="regUser" class="input-alt" placeholder="Enter your username">
+        </div>
+
+        <div class="form-group-alt">
+          <label class="label-alt">Password</label>
+          <input type="password" id="regPass" class="input-alt" placeholder="Enter your password">
+        </div>
+
+        <button onclick="register()" type="button" class="submit-button-alt">
+          <span class="button-text">Sign Up</span>
+        </button>
+
+        <p id="regMessage"></p>
+
+        <div class="switch-section">
+          Already have an account?
+          <a href="#" onclick="showLogin()" class="switch-link-alt">Sign In</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+   </div>
+  </div>
+  <script src="script.js"></script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0fc31657b72673',t:'MTc2MzU1NTg3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

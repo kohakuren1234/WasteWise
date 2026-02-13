@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registered Users</title>
+  <link rel="stylesheet" href="stylev1.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Registered Users</h1>
+    <ul id="userList"></ul>
+
+    <a href="dashboard.html"><button>Back</button></a>
+  </div>
+
+  <script>
+    fetch("/get-users")
+      .then(res => res.json())
+      .then(users => {
+        const list = document.getElementById("userList");
+        users.forEach(u => {
+          const li = document.createElement("li");
+          li.textContent = `ID: ${u.id} — ${u.username}`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+
+</body>
+</html>
